@@ -1,23 +1,16 @@
 {
   "name": "cookbook-api",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/elkins2k/cookbook-api.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/elkins2k/cookbook-api/issues"
-  },
-  "homepage": "https://github.com/elkins2k/cookbook-api#readme",
   "dependencies": {
-    "express": "^4.17.1",
-    "mongoose": "^5.9.5"
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1"
   }
 }
