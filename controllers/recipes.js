@@ -1,45 +1,46 @@
+
 const express = require ( 'express' )
 const router = express.Router ()
 
-const User = require ( '../models/User')
+const Recipe = require ( '../models/Recipe')
 
 router.get ('/', ( req, res ) => {
-    User
+    Recipe
         .find ({})
         .then ( all => res.json ( all ))
 })
 
 router.get ('/:id', ( req, res ) => {
-    User
+    Recipe
         .findById ( req.params.id )
         .then ( single => res.json ( single ))
 })
 
 router.post ('/', ( req, res ) => {
-    User
+    Recipe
         .create ( req.body )
         .then ( () => {
-            User
+            Recipe
               .find ({})
               .then (all => res.json ( all ))
         })
 })
 
 router.put ( '/:id', ( req, res ) => {
-    User
+    Recipe
         .findOneAndUpdate (
             { _id: req.params.id },
             ( req.body )
         )
         .then ( () => {
-            User
+            Recipe
               .find ({})
               .then ( all => res.json ( all ))
         })
 })
 
 router.delete ( '/:id', ( req, res ) => {
-    User
+    Recipe
         .findOneAndDelete ({ _id: req.params.id })
         .then ( () => {
             User.find ({})

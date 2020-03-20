@@ -1,9 +1,11 @@
 const mongoose = require ( 'mongoose' )
+mongoose.Promise = Promise
 
 mongoose
     .connect('mongodb://localhost/cookbook-api', {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        useFindAndModify: false
     })
     .then ( instance => console.log ( `Connected to db: ${instance.connections[0].name}` ))
     .catch ( error => console.log ( 'Connection failed!', error ))
