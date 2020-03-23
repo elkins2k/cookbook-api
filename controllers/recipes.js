@@ -23,14 +23,25 @@ router.post('/', (req, res) => {
     ingredients: req.body.ingredients,
     directions: req.body.directions
   }
-  Chapter
-    .create(req.body.mainProtein)
-    .then(newChapter => {
-      newRecipe.mainProtein = newChapter._id
-      Recipe
-        .create(newRecipe)
-        .then(recipe => res.json(recipe))
-    })
+
+  Chapter.findOne({mainProtein: req.body.mainProtein})
+    .then(chapter => {
+    if (!chapter) {
+      Chapter
+      .create(`{mainProtein:${req.body.mainProtein}}`)
+      .then(newChapter => {
+        newRecipe.mainProtein = newChapter._id
+        Recipe
+          .create(newRecipe)
+          .then(recipe => res.json(recipe))
+      })
+    } else {
+      newRecipe.mainProtein = chapter._id
+        Recipe
+          .create(newRecipe)
+          .then(recipe => res.json(recipe))
+    }
+  })
 })
 
 router.put('/:id', (req, res) => {
