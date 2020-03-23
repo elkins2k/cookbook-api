@@ -8,5 +8,6 @@ app.use ( cors ())
 
 app.use ('/api/users', require ( './controllers/users' ))
 app.use ('/api/recipes', require ( './controllers/recipes' ))
+app.use ('/api/chapters', require ( './controllers/chapters' ))
 
 app.listen ( 8080, () => console.log ( 'Server running on port 8080!' ))
