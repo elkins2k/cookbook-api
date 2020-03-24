@@ -21,7 +21,8 @@ router.post('/', (req, res) => {
   let newRecipe = {
     name: req.body.name,
     ingredients: req.body.ingredients,
-    directions: req.body.directions
+    directions: req.body.directions,
+    submittedBy: this.state.currentUser
   }
 
   Chapter.findOne({mainProtein: req.body.mainProtein})
