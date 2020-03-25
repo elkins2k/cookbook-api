@@ -18,23 +18,21 @@ router.get('/:id', (req, res) => {
 
 const Chapter = require('../models/Chapter')
 router.post('/', (req, res) => {
-  let newRecipe = {
+  const newRecipe = {
     name: req.body.name,
     ingredients: req.body.ingredients,
-    directions: req.body.directions,
-    submittedBy: this.state.currentUser
+    directions: req.body.directions
   }
-
   Chapter.findOne({mainProtein: req.body.mainProtein})
     .then(chapter => {
-    if (!chapter) {
-      Chapter
-      .create(`{mainProtein:${req.body.mainProtein}}`)
-      .then(newChapter => {
-        newRecipe.mainProtein = newChapter._id
-        Recipe
-          .create(newRecipe)
-          .then(recipe => res.json(recipe))
+      if (!chapter) {
+        Chapter
+        .create(`{mainProtein:${req.body.mainProtein}}`)
+        .then(newChapter => {
+          newRecipe.mainProtein = newChapter._id
+          Recipe
+            .create(newRecipe)
+            .then(recipe => res.json(recipe))
       })
     } else {
       newRecipe.mainProtein = chapter._id
