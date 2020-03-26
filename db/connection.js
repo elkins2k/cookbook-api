@@ -1,7 +1,15 @@
 const mongoose = require ( 'mongoose' )
 
+let mongoURI = ''
+
+if (process.env.NODE_ENV === 'production') {
+    mongoURI = process.env.MONGODB_URI
+} else {
+    mongoURI = 'mongodb://localhost/cookbook-api'
+}
+
 mongoose
-    .connect('mongodb://localhost/cookbook-api', {
+    .connect(mongoURI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false
