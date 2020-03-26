@@ -20,7 +20,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   const newRecipe = {
     name: req.body.name,
-    ingredients: req.body.ingredients,
+    // ingredients: req.body.ingredients,
     directions: req.body.directions,
     submittedBy: req.body.submittedBy
   }
@@ -74,6 +74,17 @@ router.delete('/:id', (req, res) => {
     .then(() => {
       Recipe.find({})
         .then(all => res.json(all))
+    })
+})
+
+router.delete ('/:id/ingredient/:ingredientId', (req,res) => {
+  Recipe
+    .findById(req.params.id)
+    .then(recipe => {
+      let ingredientIndex = recipe.ingredients.findIndex(ingredient => ingredient._id === req.params.ingredientId)
+      recipe.ingredients.splice(ingredientIndex,1)
+      recipe.save()
+      res.json(recipe)
     })
 })
 
