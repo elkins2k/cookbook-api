@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 const Recipe = require('../models/Recipe')
+const Chapter = require('../models/Chapter')
 
 router.get('/', (req, res) => {
   Recipe
@@ -16,18 +17,19 @@ router.get('/:id', (req, res) => {
     .then(single => res.json(single))
 })
 
-const Chapter = require('../models/Chapter')
 router.post('/', (req, res) => {
   const newRecipe = {
     name: req.body.name,
     ingredients: req.body.ingredients,
-    directions: req.body.directions
+    directions: req.body.directions,
+    submittedBy: req.body.submittedBy
   }
   Chapter.findOne({mainProtein: req.body.mainProtein})
     .then(chapter => {
+      console.log (chapter)
       if (!chapter) {
         Chapter
-        .create(`{mainProtein:${req.body.mainProtein}}`)
+        .create({mainProtein:req.body.mainProtein})
         .then(newChapter => {
           newRecipe.mainProtein = newChapter._id
           Recipe
