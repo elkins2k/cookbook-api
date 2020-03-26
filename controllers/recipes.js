@@ -26,7 +26,6 @@ router.post('/', (req, res) => {
   }
   Chapter.findOne({mainProtein: req.body.mainProtein})
     .then(chapter => {
-      console.log (chapter)
       if (!chapter) {
         Chapter
         .create({mainProtein:req.body.mainProtein})
