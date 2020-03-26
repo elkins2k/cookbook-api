@@ -44,16 +44,16 @@ router.post('/', (req, res) => {
   })
 })
 
-router.post('/:id/newIngredient/', (req, res) => {
-  Recipe
-    .findById(req.params.id)
-    .then(item => {
-    let newItem = req.body
-    item.ingredients.push(newItem);
-    item.save();
-    res.json(item);
-  });  
-})
+// router.post('/:id/newIngredient/', (req, res) => {
+//   Recipe
+//     .findById(req.params.id)
+//     .then(item => {
+//     let newItem = req.body
+//     item.ingredients.push(newItem);
+//     item.save();
+//     res.json(item);
+//   });  
+// })
 
 router.put('/:id', (req, res) => {
   Recipe
