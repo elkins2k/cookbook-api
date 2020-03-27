@@ -16,7 +16,8 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  User.findOne({ email: req.body.email })
+  User
+    .findOne({ email: req.body.email })
     .then(user => {
       if (!user) {
         User
@@ -29,7 +30,6 @@ router.post('/', (req, res) => {
         User.find ({})
         .then (all => res.json(all))
       }
-      
   })
 })
 
