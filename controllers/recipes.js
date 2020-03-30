@@ -41,6 +41,17 @@ router.post('/', (req, res) => {
           .then(recipe => res.json(recipe))
     }
   })
+  // let chapter = async Chapter.findOne({mainProtein: req.body.mainProtein})
+  //   if (!chapter._id) {
+  //       let newChapter = await Chapter.create({mainProtein:req.body.mainProtein})
+  //       newRecipe.mainProtein = newChapter._id
+  //       let newlyCreatedRecipe = await Recipe.create(newRecipe)
+  //       res.json(newlyCreatedRecipe)
+  //   } else {
+  //       newRecipe.mainProtein = chapter._id
+  //       let newlyCreatedRecipe = await Recipe.create(newRecipe)
+  //       res.json(newlyCreatedRecipe)
+  //   }
 })
 
 router.put('/:id', (req, res) => {
